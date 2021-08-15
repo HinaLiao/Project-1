@@ -111,8 +111,8 @@ window.onload = () => {
                 this.poisonedImg,
                 this.x,
                 this.y,
-                this.width + 10,
-                this.height + 10
+                this.width + 8,
+                this.height + 8
             );
         }
 
