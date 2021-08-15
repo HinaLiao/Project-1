@@ -1,0 +1,102 @@
+* {
+    font-family: 'Oxygen', sans-serif;    
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Courgette', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: rgb(3, 88, 88);
+    margin: 15px 0;
+    text-shadow: 3px 3px 3px #8b8a8a;
+}
+
+h2 a {    
+    text-decoration: none;    
+    text-transform: uppercase;
+}
+
+h2 a:hover {
+    color: #228B22;
+    text-decoration: none;
+}
+
+body {
+    background-color: #FFEBCD;
+}
+
+#canvas {
+    background-image: url(/images/tree.png);
+    background-size: 1200px;
+    background-position: 30% 70%;
+    border: 1px solid rgb(3, 88, 88);
+    border-radius: 15px;
+}
+
+#start-page {
+    width: 32%;    
+    background-color: #d0d48d;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-content: center;
+    margin: 20px 0 10px 20px;
+}
+
+h3 {
+    color: #B22222;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 0;
+}
+
+body button {
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #191970;
+    background-color: #b1a9a9;
+    border: 0;
+    border-radius: 10px;    
+    padding: 5px 10px;
+    margin: 0;
+}
+
+body button:hover {
+    color: #fff;
+    background-color: #5a742d;
+}
+
+.hungry {    
+    width: 80%;
+    font-size: 14px; 
+    margin: 10px;
+    padding: 5px 15px;
+}
+
+.to-catch {
+    display: flex;
+    flex-direction: row;
+}
+
+.instructions {
+    width: 70%;
+    height: 400px;
+    font-size: 14px;         
+    margin: 5px 35px;
+    padding: 5px 15px;
+}
+
+.red-apple {
+    width: 20%;
+    margin: 0 auto;
+}
+
+body p{
+    margin-top: 5px;
+}
+
+.poisoned {
+    width: 20%;
+}
+
