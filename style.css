@@ -1,6 +1,12 @@
 * {
     font-family: 'Oxygen', sans-serif;    
     text-align: center;
+    font-size: 14px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
 }
 
 h2 {
@@ -9,12 +15,14 @@ h2 {
     font-weight: 400;
     color: rgb(3, 88, 88);
     margin: 15px 0;
+    margin-top: 0;
     text-shadow: 3px 3px 3px #8b8a8a;
 }
 
 h2 a {    
     text-decoration: none;    
     text-transform: uppercase;
+    font-size: 30px;
 }
 
 h2 a:hover {
@@ -22,26 +30,34 @@ h2 a:hover {
     text-decoration: none;
 }
 
-body {
+body {    
     background-color: #FFEBCD;
 }
 
-#canvas {
+#game-area{
+    display: flex;
+    flex-direction: row;    
+}
+
+#canvas {        
     background-image: url(/images/tree.png);
     background-size: 1200px;
     background-position: 30% 70%;
     border: 1px solid rgb(3, 88, 88);
     border-radius: 15px;
+    margin-left: 30px;
 }
 
 #start-page {
-    width: 32%;    
+    width: 30%;
+    height: 90%;   
     background-color: #d0d48d;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
     align-content: center;
     margin: 20px 0 10px 20px;
+    padding: 0;
 }
 
 h3 {
@@ -71,32 +87,63 @@ body button:hover {
     width: 80%;
     font-size: 14px; 
     margin: 10px;
-    padding: 5px 15px;
+    margin-bottom: 0;
+    padding: 0 15px;    
+}
+
+.idea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.idea p {
+    margin-bottom: 4px;
 }
 
 .to-catch {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.instructions {
-    width: 70%;
+.instructions {    
     height: 400px;
-    font-size: 14px;         
-    margin: 5px 35px;
-    padding: 5px 15px;
-}
-
-.red-apple {
-    width: 20%;
-    margin: 0 auto;
+    padding: 0 15px;
+    padding-bottom: 10px;
+    justify-content: space-evenly;
 }
 
 body p{
-    margin-top: 5px;
+    margin: 5px 0;
 }
 
-.poisoned {
+img {
+    width: 14%;
+    margin: 0;
+}
+
+.right-key{
+    width: 48px;
+}
+
+.lamp-idea, .basket {
     width: 20%;
 }
 
+.apple-pie {
+    width: 38%;    
+}
+
+.poisoned {
+    width: 12%;
+    margin-top: 5px;
+}
+
+h4 {
+    text-transform: uppercase;
+    color: rgb(3, 88, 88);
+    font-size: 15px;
+    margin-top: 8px;
+}

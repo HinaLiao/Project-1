@@ -1,29 +1,23 @@
 window.onload = () => {
-    let canvas = document.getElementById("canvas");
-    let context = canvas.getContext("2d");
-    let id = null;
-    let start = false;
-    // document.body.insertBefore(this.canvas, document.body.childNodes[0]);    
-    // this.interval = setInterval(update, 20);
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');    
+    let start = false;    
   
     //Sounds
     let music = new Audio();
     music.src = "/audio/A Daily Cup of Tea.mp3";
     music.volume = 0.3;
+    let ding = new Audio();
+    ding.src = "/audio/Bubble.mp3";    
     let winner = new Audio();
-    winner.src = "";
+    winner.src = "/audio/Tada.mp3";
+    winner.volume = 0.3;
     let ops = new Audio();
-    ops.src = "";
+    ops.src = "/audio/404.mp3";
+    ops.volume = 0.4;
     let gameOver = new Audio();
     gameOver.src = "/audio/Rainmaker.mp3";
-    gameOver.volume = 0.3;
-
-
-    // //Images
-    // let party = new Image();
-    // party.src = ""; //dancing
-    // let dead = new Image();
-    // dead.src = ""; //dead bunny
+    gameOver.volume = 0.4;
 
 
     //Player
@@ -36,10 +30,10 @@ window.onload = () => {
             this.speedX = 0;        
             this.bsktImg = new Image();
             this.bsktImg.src = "../images/basket.png";
-            // this.bennyWin = new Image();
-            // this.bennyWin.src = "";
-            // this.bennyDead = new Image();
-            // this.bennyDead.src = "";
+            this.bennyWin = new Image();
+            this.bennyWin.src = "../images/apple-pie.png";
+            this.bennyDead = new Image();
+            this.bennyDead.src = "../images/bunny5.jpg";
         }
         
         createBasket(){
@@ -70,17 +64,20 @@ window.onload = () => {
             return this.x + this.width;
         }
         top() {
-            return this.y + 10;
+            return this.y;
         }
 
         //Colect
         collect(fruit) {
             return (
-                this.top() === fruit.bottom()
+                this.top() < fruit.bottom() // this.top() === fruit.bottom()
+                // this.right() < fruit.left() ||
+                // this.left() < fruit.right()
             );
         }
     }
 
+    //"Obstacles"
     class Fruit{
         constructor(x){
             this.x = x;
@@ -111,13 +108,13 @@ window.onload = () => {
                 this.poisonedImg,
                 this.x,
                 this.y,
-                this.width + 8,
-                this.height + 8
+                this.width + 6,
+                this.height + 6
             );
         }
 
         moveFruit(){
-            this.y += 6;
+            this.y += 8;
         }
 
         left() {
@@ -133,17 +130,17 @@ window.onload = () => {
         }
 
         bottom() {
-            return this.y + this.height;
+            return this.y + (this.height - 22);
         }
     }
 
     document.addEventListener('keydown', (e) => {
         switch (e.keyCode) {
             case 37: // left arrow
-                benny.speedX -= 4;
+                benny.speedX -= 5;
                 break;
             case 39: // right arrow
-                benny.speedX += 4;
+                benny.speedX += 5;
                 break;
             case 32: // spacebar
                 if (!start) {
@@ -173,20 +170,20 @@ window.onload = () => {
           if (frames % 120 === 0) {
             poison.push(
                 new Fruit(
-                    Math.floor(Math.random() * (canvas.width - 20))
+                    Math.floor(Math.random() * (canvas.width - 25))
                 )
-            ); console.log(fruits);
+            ); //console.log(fruits);
           }
         } else if (count >= 15){
           if (frames % 60 === 0) {
             poison.push(
                 new Fruit(
-                    Math.floor(Math.random() * (canvas.width - 20))
+                    Math.floor(Math.random() * (canvas.width - 25))
                 )
             );
           }
         }
-        if (frames % 40 === 0) {
+        if (frames % 35 === 0) {
           setTimeout(function() {
             fruits.push(
                 new Fruit(
@@ -198,13 +195,6 @@ window.onload = () => {
     }
     
     function moving(){
-        poison.forEach((elem, index) => {
-            elem.createPoisoned();
-            elem.moveFruit();
-            if (elem.y >= canvas.height){
-                poison.splice(index, 1);
-            }
-        })
         fruits.forEach((elem, index) => {
             elem.createFruit();
             elem.moveFruit();
@@ -212,45 +202,60 @@ window.onload = () => {
                 fruits.splice(index, 1);
             }
         })
+        poison.forEach((elem, index) => {
+            elem.createPoisoned();
+            elem.moveFruit();
+            if (elem.y >= canvas.height){
+                poison.splice(index, 1);
+            }
+        })
+        
     }
     
     //Collected apples
-    function nomNomNom() {
-        let tabeta = fruits.some(function(apple){
+    function nomNomNom(){
+        let eat = fruits.some(function(apple){
             return benny.collect(apple);
         })
-        if (tabeta){
+        if (eat){
             if (count > 0){
-                apple.forEach((elem, index) => {
-                    apple.splice(index, 1);
+                fruits.forEach((elem, index) => {
+                    fruits.splice(index, 1);
                     count += 1;
+                    ding.play();
                 })
-            } if (count >= 15) {
+            } if (count >= 15){
                 music.pause();
                 winner.play();
                 count = 15;
                 cancelAnimationFrame(id);
                 context.font = '20px Oxygen';
                 context.fillStyle = 'black';
-                context.fillText("Yay, Benny'll bake a delicious Apple Pie!", canvas.width/3, canvas.height/2);
+                context.fillText("Yay, Benny'll bake a delicious Apple Pie!", canvas.width/3, canvas.height/3);
+                context.drawImage(benny.bennyWin, 110, 200);
             }
         }
     }
 
     //Collected poisoned apple
-    function hangry(){ //and dead heuehu
+    function hangry(){ //and dead x_x
         let wrong = poison.some(function (poisonedApple){
             return benny.collect(poisonedApple);
         });
 
         if (wrong) {
-            ops.play();
-            music.pause();
-            gameOver.play();
-            cancelAnimationFrame(id);
-            context.font = '30px Oxygen';
-            context.fillStyle = 'black';
-            context.fillText("You ate the poisoned apple! Benny has died x_x", canvas.width/3, canvas.height/2);
+            poison.forEach((elem, index) =>{
+                poison.splice(index);
+                ops.play();
+                ops.loop = false;
+                music.pause();
+                gameOver.play();
+                cancelAnimationFrame(id);
+                context.font = '15px Oxygen';
+                context.fillStyle = 'black';
+                context.fillText("You ate the poisoned apple!", canvas.width/4, canvas.height/3);
+                context.drawImage(benny.bennyDead, 110, 200);
+            })
         }
     }
 
@@ -273,8 +278,8 @@ window.onload = () => {
         
         id = requestAnimationFrame(update); //start the animation
         
-        nomNomNom(); //win
-        hangry(); //lose
+        nomNomNom();    //win
+        hangry();       //lose
         score(count);  //score
     }
 }
