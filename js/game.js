@@ -47,13 +47,13 @@ window.onload = () => {
         }
 
         //Position
-        position() {
+        position(){ // to avoid leaving the canvas area
             if (this.x >= 0 && this.x <= canvas.width - this.width) {
               this.x += this.speedX;
             } else if (this.x < 0) {
               this.x = 1;
             } else if (this.x >= canvas.width - this.width) {
-              this.x = canvas.width - 50;
+              this.x = canvas.width - 80;
             }
         }
 
@@ -69,10 +69,10 @@ window.onload = () => {
 
         //Colect
         collect(fruit) {
-            return (
-                this.top() < fruit.bottom() // this.top() === fruit.bottom()
-                // this.right() < fruit.left() ||
-                // this.left() < fruit.right()
+            return !(
+                this.top() > fruit.bottom() ||
+                this.right() < fruit.left() || 
+                this.left() > fruit.right()
             );
         }
     }
@@ -114,7 +114,7 @@ window.onload = () => {
         }
 
         moveFruit(){
-            this.y += 8;
+            this.y += 6;
         }
 
         left() {
@@ -130,17 +130,17 @@ window.onload = () => {
         }
 
         bottom() {
-            return this.y + (this.height - 22);
+            return this.y + (this.height - 20);
         }
     }
 
     document.addEventListener('keydown', (e) => {
         switch (e.keyCode) {
             case 37: // left arrow
-                benny.speedX -= 5;
+                benny.speedX -= 7;
                 break;
             case 39: // right arrow
-                benny.speedX += 5;
+                benny.speedX += 7;
                 break;
             case 32: // spacebar
                 if (!start) {
@@ -163,6 +163,7 @@ window.onload = () => {
     let fruits = [];
     let poison = [];
 
+    
     // Creating normal apples + poisoned apples.
     function createFruit(){
         frames += 1;
@@ -211,28 +212,31 @@ window.onload = () => {
         })
         
     }
-    
+
+       
     //Collected apples
     function nomNomNom(){
         let eat = fruits.some(function(apple){
             return benny.collect(apple);
         })
+        console.log(eat);
         if (eat){
-            if (count > 0){
+            if (count >= 0){
                 fruits.forEach((elem, index) => {
                     fruits.splice(index, 1);
-                    count += 1;
+                    count++;
                     ding.play();
                 })
-            } if (count >= 15){
+            } if (count >= 25){
                 music.pause();
                 winner.play();
-                count = 15;
+                count = 25;
                 cancelAnimationFrame(id);
                 context.font = '20px Oxygen';
                 context.fillStyle = 'black';
-                context.fillText("Yay, Benny'll bake a delicious Apple Pie!", canvas.width/3, canvas.height/3);
-                context.drawImage(benny.bennyWin, 110, 200);
+                context.fillText("Yay, Apple Pie!", canvas.width/3, canvas.height/3);
+                context.drawImage(benny.bennyWin, 110, 200, 200, 150);
+                context.fillText("Press spacebar to restart", canvas.width/4, canvas.height/1.5);
             }
         }
     }
@@ -251,10 +255,11 @@ window.onload = () => {
                 music.pause();
                 gameOver.play();
                 cancelAnimationFrame(id);
-                context.font = '15px Oxygen';
+                context.font = '20px Oxygen';
                 context.fillStyle = 'black';
-                context.fillText("You ate the poisoned apple!", canvas.width/4, canvas.height/3);
+                context.fillText("You ate the poisoned apple!", canvas.width/5, canvas.height/3);
                 context.drawImage(benny.bennyDead, 110, 200);
+                context.fillText("Press spacebar to restart", canvas.width/4.3, canvas.height/1.4);
             })
         }
     }
@@ -270,7 +275,7 @@ window.onload = () => {
     }
 
     function update(){
-        context.clearRect(0, 0, 600, 700); //clear
+        context.clearRect(0, 0, canvas.width, canvas.height); //clear
         benny.createBasket(); //create player
         benny.position(); 
         createFruit(); //print apple and poisoned apple
