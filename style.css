@@ -51,8 +51,7 @@ body {
 
 #start-page {
     width: 30%;
-    height: 100%;   
-    background-color: #d0d48d;
+    height: 9%;    
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -149,13 +148,8 @@ h4 {
     margin-top: 8px;
 }
 
-@media (max-width: 1920px) { 
+@media (min-width: 540px) { 
     #start-page {
-        height: 800px;
-    }
-    
-@media (min-width: 880px) { 
-    #start-page {
-        height: 600px;
+        background-color: #d0d48d;
     }
 }
