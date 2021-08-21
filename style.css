@@ -40,7 +40,8 @@ body {
 }
 
 #canvas {        
-    background-image: url(/images/tree.png);
+    justify-content: center;
+    background-image: url(./images/tree.png);
     background-size: 1200px;
     background-position: 30% 70%;
     border: 1px solid rgb(3, 88, 88);
@@ -124,8 +125,8 @@ img {
     margin: 0;
 }
 
-.right-key{
-    width: 48px;
+.arrow-keys{
+    width: 25%;
 }
 
 .lamp-idea, .basket {
@@ -146,4 +147,10 @@ h4 {
     color: rgb(3, 88, 88);
     font-size: 15px;
     margin-top: 8px;
+}
+
+@media (max-width: 600px) { 
+    #start-page {
+        height: 500px;
+    }
 }
