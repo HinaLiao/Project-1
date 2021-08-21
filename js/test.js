@@ -5,18 +5,18 @@ window.onload = () => {
   
     //Sounds
     let music = new Audio();
-    music.src = "../audio/A Daily Cup of Tea.mp3";
+    music.src = "./audio/A Daily Cup of Tea.mp3";
     music.volume = 0.3;
     let ding = new Audio();
-    ding.src = "../audio/Bubble.mp3";    
+    ding.src = "./audio/Bubble.mp3";    
     let winner = new Audio();
-    winner.src = "../audio/Tada.mp3";
+    winner.src = "./audio/Tada.mp3";
     winner.volume = 0.3;
     let ops = new Audio();
-    ops.src = "../audio/blue-screen.mp3";
+    ops.src = "./audio/blue-screen.mp3";
     ops.volume = 0.4;
     let gameOver = new Audio();
-    gameOver.src = "../audio/Rainmaker.mp3";
+    gameOver.src = "./audio/Rainmaker.mp3";
     gameOver.volume = 0.4;
 
 
@@ -29,11 +29,11 @@ window.onload = () => {
             this.height = height;
             this.speedX = 0;        
             this.bsktImg = new Image();
-            this.bsktImg.src = "../images/basket.png";
+            this.bsktImg.src = "./images/basket.png";
             this.bennyWin = new Image();
-            this.bennyWin.src = "../images/apple-pie.png";
+            this.bennyWin.src = "./images/apple-pie.png";
             this.bennyDead = new Image();
-            this.bennyDead.src = "../images/bunny5.jpg";
+            this.bennyDead.src = "./images/bunny5.jpg";
         }
         
         createBasket(){
@@ -89,7 +89,7 @@ window.onload = () => {
         // Apples
         createFruit(){
             this.fruitImg = new Image();
-            this.fruitImg.src = "../images/apple.png";
+            this.fruitImg.src = "./images/apple.png";
             context.drawImage(
                 this.fruitImg,
                 this.x,
@@ -102,7 +102,7 @@ window.onload = () => {
         //Poisoned Apples
         createPoisoned(){
             this.poisonedImg = new Image();
-            this.poisonedImg.src = "../images/poisoned-apple.png";
+            this.poisonedImg.src = "./images/poisoned-apple.png";
             console.log(this.poisonedImg);
             context.drawImage(
                 this.poisonedImg,
