@@ -1,5 +1,7 @@
 # Benny, the Bunny
 
+This game is created as my first IronHack Project for my Web Dev Bootcamp Course (:
+
 Playable only on desktop!
 
 ## Table of Contents
@@ -11,6 +13,7 @@ Playable only on desktop!
 
 ### Setup
 • To run this project, access the following link in your browser navigator: https://hinaliao.github.io/project-1/
+* Or click [here](https://hinaliao.github.io/project-1/) to play!
 
 #### A hangry bunny
 Benny, the Bunny is hungry!
