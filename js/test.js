@@ -298,7 +298,7 @@ window.onload = () => {
         benny.position(); 
         createFruit(); //print apple and poisoned apple
         moving(); //move them
-        getPosition();
+        // getPosition();
         id = requestAnimationFrame(update); //start the animation
         
         nomNomNom();    //win
