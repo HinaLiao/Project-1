@@ -149,7 +149,7 @@ h4 {
     margin-top: 8px;
 }
 
-@media (max-width: 700px) { 
+@media (max-width: 1920px) { 
     #start-page {
         height: 900px;
     }
