@@ -157,6 +157,24 @@ window.onload = () => {
         benny.speedX = 0;  
     });
 
+    // canvas.addEventListener("mousemove", function (event) {
+    //     mouse.x = event.x - canvasPosition.left;
+    //     mouse.y = event.y - canvasPosition.top;
+    //   });
+      
+    //   canvas.addEventListener("mouseleave", function () {
+    //     mouse.y = undefined;
+    //     mouse.x = undefined;
+    //   });
+
+    // let mouseX = (canvas.width/2.5);
+    // let mouseY = (canvas.height - 48);
+    // function getPosition(event) {
+    //     mouseX = event.clientX - canvas.offsetLeft;
+    //     mouseY = event.clientY - canvas.offsetTop;
+    // }
+    // canvas.addEventListener("mousemove", getPosition, false);
+
     let benny = new Player(canvas.width/2.5, canvas.height - 48, 50, 50);
     let count = 0;
     let frames = 0;
@@ -280,7 +298,7 @@ window.onload = () => {
         benny.position(); 
         createFruit(); //print apple and poisoned apple
         moving(); //move them
-        
+        getPosition();
         id = requestAnimationFrame(update); //start the animation
         
         nomNomNom();    //win
