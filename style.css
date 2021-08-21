@@ -40,7 +40,7 @@ body {
 }
 
 #canvas {        
-    justify-content: center;
+    align-items: center;
     background-image: url(./images/tree.png);
     background-size: 1200px;
     background-position: 30% 70%;
