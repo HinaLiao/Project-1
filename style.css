@@ -154,8 +154,8 @@ h4 {
         height: 500px;
     }
     
-@media (min-width: 900px) { 
+@media (min-width: 880px) { 
     #start-page {
-        height: 800px;
+        height: 900px;
     }
 }
