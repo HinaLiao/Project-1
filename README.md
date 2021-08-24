@@ -1,4 +1,4 @@
-# Benny, the Bunny
+# Benny's Apple Pie
 
 This game is created as my first IronHack Project for my Web Dev Bootcamp Course (:
 
